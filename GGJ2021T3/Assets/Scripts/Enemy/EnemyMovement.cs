@@ -36,18 +36,45 @@ public class EnemyMovement : MonoBehaviour
   public bool m_touchedPlayer = false;
 
   float timeToAttacAgain = 2;
-  float elapseToAttac = 1;
+  float elapseToAttac = 10;
 
   float timeToContinue = 10;
 
+  public bool isFleeze = false;
+  float timeFleeze = 0;
+  public float timeToDesFleeze = 4;
+
+  public View m_myView;
+
+  public SpriteRenderer m_mySprite;
   private void Start()
   {
     scale = transform.localScale;
+    m_mySprite = GetComponent<SpriteRenderer>();
   }
-
   // Update is called once per frame
   void Update()
   {
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+      freeze();
+    }
+    if (isFleeze)
+    {
+      timeFleeze += Time.deltaTime;
+      if (timeFleeze>= timeToDesFleeze)
+      {
+        m_mySprite.color = Color.white;
+        m_myView.m_mySprite.enabled = true;
+        isFleeze = false;
+      }
+      else
+      {
+        m_mySprite.color = Color.cyan;
+        m_myView.m_mySprite.enabled = false;
+      }
+      return;
+    }
     timeToContinue += Time.deltaTime;
     if (timeToContinue>2)
     {
@@ -67,7 +94,12 @@ public class EnemyMovement : MonoBehaviour
       elapseToAttac += Time.deltaTime;
       if (timeToAttacAgain <= elapseToAttac)
       {
+        m_myView.m_mySprite.enabled = true;
         m_touchedPlayer = false;
+      }
+      else
+      {
+        m_myView.m_mySprite.enabled = false;
       }
       m_direction.z = 0;
       m_direction.Normalize();
@@ -202,7 +234,17 @@ public class EnemyMovement : MonoBehaviour
       timeToContinue = 0;
        timeToAttacAgain = Random.Range(2, 4);
       elapseToAttac = 0;
+      m_myView.m_mySprite.enabled = false;
       m_touchedPlayer = true;
+    }
+  }
+
+  public void freeze()
+  {
+    if (!isFleeze)
+    {
+      isFleeze = true;
+      timeFleeze = 0;
     }
   }
 }
