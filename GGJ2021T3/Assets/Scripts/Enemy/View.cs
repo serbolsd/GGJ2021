@@ -19,17 +19,17 @@ public class View : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-    if (m_body.seePlayer)
-    {
-      if (elapseTime >= timeToLeft)
-      {
-        m_body.seePlayer = false;
-      }
-      else
-      {
-        return;
-      }
-    }
+    //if (m_body.seePlayer)
+    //{
+    //  if (elapseTime >= timeToLeft)
+    //  {
+    //    m_body.seePlayer = false;
+    //  }
+    //  else
+    //  {
+    //    return;
+    //  }
+    //}
     var p = collision.GetComponent<tempPlayer>();
     if (p)
     {
