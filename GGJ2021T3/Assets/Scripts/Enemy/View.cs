@@ -11,6 +11,10 @@ public class View : MonoBehaviour
   void Update()
   {
     elapseTime += Time.deltaTime;
+    if (elapseTime >= timeToLeft)
+    {
+      m_body.seePlayer = false;
+    }
   }
 
   private void OnTriggerEnter2D(Collider2D collision)
@@ -29,6 +33,8 @@ public class View : MonoBehaviour
     var p = collision.GetComponent<tempPlayer>();
     if (p)
     {
+
+      elapseTime = 0;
       m_body.playerPos = p.transform;
       m_body.seePlayer = true;
     }
