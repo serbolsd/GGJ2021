@@ -391,7 +391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86936be78240d76459a562597878d6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpClip: {fileID: 8300000, guid: cf14f080f09edfe46a88fc2e4791112a, type: 3}
 --- !u!4 &1826258234
 Transform:
   m_ObjectHideFlags: 0
@@ -511,17 +510,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1826258232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59cc3150d172ad42a8a6dda71b2e658, type: 3}
+  m_Script: {fileID: 11500000, guid: ba719d945e7c9dc4e91e1eef1f819fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackClip: {fileID: 8300000, guid: 2ccd8d78cb76de1409da1f7816c34241, type: 3}
-  Clip1: {fileID: 8300000, guid: 366d14ad2c64fc94d8c2982f963406f2, type: 3}
-  Clip2: {fileID: 8300000, guid: 22be1787128a72043987c4e3a55a3ec7, type: 3}
-  Clip3: {fileID: 8300000, guid: 7cc6e2a218509584f9b7a891952c0255, type: 3}
-  Clip4: {fileID: 8300000, guid: 85fba74631689f4418d55eb0f8d8149b, type: 3}
-  Clip5: {fileID: 8300000, guid: adf5702edfc3dbf4b82c69d0f4e5ff79, type: 3}
-  Clip6: {fileID: 8300000, guid: 5bce59fb73b3a0f46ae11ad53cf5b0fe, type: 3}
-  Clip7: {fileID: 8300000, guid: dca7da7a5b5cfad4b98b9631dfaaa467, type: 3}
-  Clip8: {fileID: 8300000, guid: a49310d0788e9de47aff9fc07573ed4d, type: 3}
-  Clip9: {fileID: 8300000, guid: 3e18df4421ba6d84baefd14d5d72e8be, type: 3}
-  Clip10: {fileID: 8300000, guid: b33896f0d1829fc48b458ca332b5376b, type: 3}
+  attackClip: {fileID: 8300000, guid: 7b4f66b49446a534587ea385a9519078, type: 3}
+  deathClip: {fileID: 8300000, guid: 46f565f9f0d59db499019f052311f2b6, type: 3}
+  jumpClip: {fileID: 8300000, guid: 8d3a013f9a4fc6b479030a5d33f3c417, type: 3}
+  victoryClip: {fileID: 8300000, guid: 8175dfdb4b6eefb4881dafd1e778ec57, type: 3}
+  damgeGhost: {fileID: 8300000, guid: 6eaa180b0127e054583c53b02be9557b, type: 3}
+  ghost: {fileID: 8300000, guid: 2c0bd06e3ea4a8e479f384988cbe19b6, type: 3}
+  Clip6: {fileID: 0}
+  Clip7: {fileID: 0}
+  Clip8: {fileID: 0}
+  Clip9: {fileID: 0}
+  Clip10: {fileID: 0}

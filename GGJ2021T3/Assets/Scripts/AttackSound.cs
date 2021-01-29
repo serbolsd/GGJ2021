@@ -6,11 +6,11 @@ public class AttackSound : MonoBehaviour
 {
 
     public AudioClip attackClip;
-    public AudioClip Clip1;
-    public AudioClip Clip2;
-    public AudioClip Clip3;
-    public AudioClip Clip4;
-    public AudioClip Clip5;
+    public AudioClip deathClip;
+    public AudioClip jumpClip;
+    public AudioClip victoryClip;
+    public AudioClip damgeGhost;
+    public AudioClip ghost;
     public AudioClip Clip6;
     public AudioClip Clip7;
     public AudioClip Clip8;
@@ -37,37 +37,32 @@ public class AttackSound : MonoBehaviour
 
         if (Input.GetKeyDown("q"))
         {
-            audioattack.clip = Clip1;
+            audioattack.clip = deathClip;
             audioattack.Play();
         }
 
         if (Input.GetKeyDown("e"))
         {
-            audioattack.clip = Clip2;
+            audioattack.clip = jumpClip;
             audioattack.Play();
         }
 
         if (Input.GetKeyDown("r"))
         {
-            audioattack.clip = Clip3;
+            audioattack.clip = victoryClip;
             audioattack.Play();
         }
 
-        if (Input.GetKeyDown("s"))
-        {
-            audioattack.clip = Clip4;
-            audioattack.Play();
-        }
 
         if (Input.GetKeyDown("t"))
         {
-            audioattack.clip = Clip5;
+            audioattack.clip = damgeGhost;
             audioattack.Play();
         }
 
         if (Input.GetKeyDown("u"))
         {
-            audioattack.clip = Clip6;
+            audioattack.clip = ghost;
             audioattack.Play();
         }
 
