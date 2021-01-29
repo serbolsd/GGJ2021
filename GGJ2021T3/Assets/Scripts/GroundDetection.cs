@@ -35,7 +35,7 @@ public class GroundDetection : MonoBehaviour
     }
 
     dectector.transform.position = boxPos;
-    Vector2 newBoxOffset = new Vector2(0, -boxSize.y);
+    Vector2 newBoxOffset = new Vector2(0, -2);
     dectector.offset = newBoxOffset; 
     Vector2 newBoxSize = new Vector2(boxSize.x, boxSize.y);
     dectector.size = newBoxSize; 

@@ -54,6 +54,8 @@ public class Movemient : MonoBehaviour
   public float secondsUntilMaxSpeed = 0.5f;
 
 
+  public Animator m_animator;
+  public SpriteRenderer m_sprite;
   private void Start()
   {
     direction = Vector3.right;
@@ -88,6 +90,9 @@ public class Movemient : MonoBehaviour
     Debug.Assert(groundDetection.init(lowestPoint, groundDetectionSize) == true);
     Debug.Assert(body != null);
     Debug.Assert(secondsUntilMaxSpeed > float.Epsilon);
+
+    m_animator = GetComponent<Animator>();
+    m_sprite = GetComponent<SpriteRenderer>();
   }
 
   // Update is called once per frame
@@ -100,8 +105,9 @@ public class Movemient : MonoBehaviour
     body.velocity += result;
 
     //bool isTooMuchVelocity = body.velocity.magnitude > currentMaxVelocity;
-    bool isTooMuchVelocity = Mathf.Abs(body.velocity.x) > currentMaxVelocity;
-
+    float speedx = Mathf.Abs(body.velocity.x);
+    bool isTooMuchVelocity = speedx > currentMaxVelocity;
+    m_animator.SetFloat("speed", speedx);
     if (isTooMuchVelocity)
     {
       Vector2 normalizedVelocity = body.velocity;//.normalized;
@@ -123,17 +129,20 @@ public class Movemient : MonoBehaviour
     Vector2 result = Vector2.zero;
     if (Input.GetKey(KeyCode.D))
     {
+      m_sprite.flipX = false;
       direction = Vector2.right;
       result += calculateMovingDistance();
     }
     if (Input.GetKey(KeyCode.A))
     {
+      m_sprite.flipX = true;
       direction = Vector2.left;
       result += calculateMovingDistance();
     }
     if (Input.GetKeyDown(KeyCode.W) && groundDetection.isOnGround)
     {
       //direction += Vector2.up;
+      GetComponent<JumpSound>().play();
       result += calculateJumpingMovment();
     }
 

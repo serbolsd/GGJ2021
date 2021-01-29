@@ -16,8 +16,13 @@ public class JumpSound : MonoBehaviour {
     // Update is called once per frame
   void Update() {
     if (Input.GetKeyDown("w")) {
-      audioPlayer.clip = jumpClip;
-      audioPlayer.Play();
+
     }
+  }
+
+  public void play()
+  {
+    audioPlayer.clip = jumpClip;
+    audioPlayer.Play();
   }
 }
