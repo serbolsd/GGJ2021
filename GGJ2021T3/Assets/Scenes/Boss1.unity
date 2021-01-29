@@ -1033,8 +1033,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentSpeed: 0.05
   m_speed1: 0.02
-  m_speed2: 0.05
-  m_speed3: 0.07
+  m_speed2: 0.03
+  m_speed3: 0.06
   m_pathPoints: []
   m_pathPoints1:
   - {fileID: 72419272}
@@ -1199,6 +1199,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7402732237224043340, guid: df6cfede4b74d6f408e815ca7313604a, type: 3}
   m_PrefabInstance: {fileID: 1453156635}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1281027461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1281027462}
+  m_Layer: 0
+  m_Name: MnusManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1281027462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281027461}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.161735, y: 0.13476518, z: -5.8694177}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1288572016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,7 +1736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_life: 10
-  speedToRecover: 10
+  speedToRecover: 0.3
   m_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1765992657
 GameObject:

@@ -11,6 +11,7 @@ public class PlayerShoot : MonoBehaviour
 
   public float m_shootDelay;
   public float m_elapseTime;
+  public bool shooting = false;
   // Update is called once per frame
   private void Start()
   {
@@ -20,6 +21,10 @@ public class PlayerShoot : MonoBehaviour
   void Update()
   {
     m_elapseTime += Time.deltaTime;
+    if (m_elapseTime>=0.2)
+    {
+      shooting = false;
+    }
     if (Input.GetKeyDown(KeyCode.Space))
     {
       if (m_elapseTime>= m_shootDelay)
@@ -37,6 +42,7 @@ public class PlayerShoot : MonoBehaviour
       return;
     }
     m_life.addDamage(5);
+    shooting = true;
     var obj = Instantiate(bullet, m_spawn.position, Quaternion.identity);
     var attack = obj.GetComponent<WaxBullet>();
     attack.setDirection(m_direcrtion);

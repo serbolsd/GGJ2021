@@ -111,6 +111,8 @@ public class Movemient : MonoBehaviour
     float speedx = Mathf.Abs(body.velocity.x);
     bool isTooMuchVelocity = speedx > currentMaxVelocity;
     m_animator.SetFloat("speed", speedx);
+    m_animator.SetBool("jumping", !groundDetection.isOnGround);
+    m_animator.SetBool("Attacking", m_shooter.shooting);
     if (isTooMuchVelocity)
     {
       Vector2 normalizedVelocity = body.velocity;//.normalized;

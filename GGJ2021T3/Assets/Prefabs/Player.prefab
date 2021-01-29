@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 804255269}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -403,8 +403,9 @@ MonoBehaviour:
   bullet: {fileID: 4189279290423051258, guid: e50ce038fa8c3044da570723fe7c73ab, type: 3}
   m_direcrtion: {x: 1, y: 0, z: 0}
   m_life: {fileID: 0}
-  m_shootDelay: 0.5
+  m_shootDelay: 0.6
   m_elapseTime: 0
+  shooting: 0
 --- !u!1 &4669813989565759259
 GameObject:
   m_ObjectHideFlags: 0
