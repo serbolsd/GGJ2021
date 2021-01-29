@@ -41,6 +41,10 @@ public class WaxBullet : MonoBehaviour
     {
       collision.GetComponent<EnemyMovement>().freeze();
     }
+    if (collision.tag == "BCandle")
+    {
+      collision.GetComponent<BossCandle>().addDamage();
+    }
     if (collision.tag !="Player" && collision.tag != "ViewEnemy" && collision.tag != "WaxHealth")
     {
       Destroy(transform.gameObject);
