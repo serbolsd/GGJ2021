@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Controls the movement of a character.
 /// </summary>
+[RequireComponent(typeof(Rigidbody2D))]
 public class Movemient : MonoBehaviour
 {
   const float DEFAULT_MAX_VELOCITY = 45.0f;
@@ -19,9 +20,23 @@ public class Movemient : MonoBehaviour
 
   const float CURRENT_GRAVITY_SCALE = 2.5f;
 
+  static Vector2 CURRENT_GROUND_DETECTION_SIZE = new Vector2(2.0f, 1.0f);
+
+  /** Controls the physics of the character. */
   public Rigidbody2D body;
 
+  /** keeps track if where on the ground*/
+  public GroundDetection groundDetection;
+
+
+  private Bounds bounds;
+
+  /** The direction of the character*/
   public Vector2 direction;
+
+  /** controls how big the box that controls the ground detection is.
+   */
+  public Vector2 groundDetectionSize = CURRENT_GROUND_DETECTION_SIZE; 
 
   /** Controls how fast the character can go */
   public float currentMaxVelocity;
@@ -41,7 +56,6 @@ public class Movemient : MonoBehaviour
 
   private void Start()
   {
-    direction = new Vector3();
     direction = Vector3.right;
 
     if (runningSpeed < MIN_SPEED)
@@ -58,11 +72,20 @@ public class Movemient : MonoBehaviour
     {
       currentMaxVelocity = DEFAULT_MAX_VELOCITY;
     }
+
     acceleration = 1.0f;
 
     body = GetComponent<Rigidbody2D>();
     body.gravityScale = CURRENT_GRAVITY_SCALE;
+    groundDetection = GetComponent<GroundDetection>();
 
+    bounds = GetComponent<SpriteRenderer>().bounds;
+
+    groundDetectionSize = CURRENT_GROUND_DETECTION_SIZE;
+
+    Vector2 lowestPoint = new Vector2(bounds.center.x, bounds.center.y - (bounds.size.y * 0.5f));
+
+    Debug.Assert(groundDetection.init(lowestPoint, groundDetectionSize) == true);
     Debug.Assert(body != null);
     Debug.Assert(secondsUntilMaxSpeed > float.Epsilon);
   }
@@ -99,7 +122,7 @@ public class Movemient : MonoBehaviour
       direction = Vector2.left;
       result += calculateMovingDistance();
     }
-    if (Input.GetKeyDown(KeyCode.W))
+    if (Input.GetKeyDown(KeyCode.W) && groundDetection.isOnGround)
     {
       //direction += Vector2.up;
       result += calculateJumpingMovment();
