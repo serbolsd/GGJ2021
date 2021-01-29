@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+  public float damage = 10;
   public float m_weight = 1;
   public float m_speed = 1;
   public List<Transform> m_pathPoints;
@@ -55,10 +56,10 @@ public class EnemyMovement : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space))
-    {
-      freeze();
-    }
+    //if (Input.GetKeyDown(KeyCode.Space))
+    //{
+    //  freeze();
+    //}
     if (isFleeze)
     {
       timeFleeze += Time.deltaTime;
@@ -228,11 +229,15 @@ public class EnemyMovement : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-    var p=collision.GetComponent<tempPlayer>();
-    if (p && timeToAttacAgain <= elapseToAttac)
+    if (isFleeze)
     {
+      return;
+    }
+    if (collision.tag == "Player" && timeToAttacAgain <= elapseToAttac)
+    {
+      FindObjectOfType<Vida_Script>().addDamage(damage);
       timeToContinue = 0;
-       timeToAttacAgain = Random.Range(2, 4);
+      timeToAttacAgain = Random.Range(2, 4);
       elapseToAttac = 0;
       m_myView.m_mySprite.enabled = false;
       m_touchedPlayer = true;

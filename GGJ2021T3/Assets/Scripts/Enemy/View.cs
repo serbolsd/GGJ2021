@@ -35,10 +35,9 @@ public class View : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-    var p = collision.GetComponent<tempPlayer>();
-    if (p)
+    if (collision.tag=="Player")
     {
-
+      var p = collision;
       m_mySprite.color = new Color(1,0,0,0.5f);
       elapseTime = 0;
       m_body.playerPos = p.transform;

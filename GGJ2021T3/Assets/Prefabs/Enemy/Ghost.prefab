@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 499764127}
   m_Layer: 0
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8367192672595985127}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.15, y: -0.12, z: 0}
-  m_LocalScale: {x: 0.23966001, y: 0.23966001, z: 0.23966001}
+  m_LocalScale: {x: 0.47799718, y: 0.47799718, z: 0.47799718}
   m_Children:
   - {fileID: 8367192674074579692}
   m_Father: {fileID: 0}
@@ -98,11 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66ef72be95748140b3489e0dde1692f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   m_weight: 1
   m_speed: 0.01
   m_pathPoints:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   m_impetu: 1
@@ -157,9 +156,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.28, y: 0.55}
+  m_Offset: {x: 0.28, y: -0}
   serializedVersion: 2
-  m_Radius: 1.12
+  m_Radius: 1.76
 --- !u!1 &8367192674074579699
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +174,7 @@ GameObject:
   - component: {fileID: 8367192674074579688}
   m_Layer: 0
   m_Name: Vista
-  m_TagString: Untagged
+  m_TagString: ViewEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,8 +187,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8367192674074579699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4, y: 0.4, z: 0}
-  m_LocalScale: {x: -1.6209829, y: 1.6209829, z: 1.6209829}
+  m_LocalPosition: {x: -4.43, y: 0.4, z: 0}
+  m_LocalScale: {x: -1.0083811, y: 1.0083811, z: 1.0083811}
   m_Children: []
   m_Father: {fileID: 8367192672595985122}
   m_RootOrder: 0
