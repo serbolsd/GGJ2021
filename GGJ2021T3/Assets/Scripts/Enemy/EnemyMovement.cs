@@ -32,6 +32,14 @@ public class EnemyMovement : MonoBehaviour
   float newViewDir=0;
 
   Vector3 scale;
+
+  public bool m_touchedPlayer = false;
+
+  float timeToAttacAgain = 2;
+  float elapseToAttac = 1;
+
+  float timeToContinue = 10;
+
   private void Start()
   {
     scale = transform.localScale;
@@ -40,20 +48,36 @@ public class EnemyMovement : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (seePlayer)
+    timeToContinue += Time.deltaTime;
+    if (timeToContinue>2)
     {
-      m_direction = seek(playerPos.position,2);
+      if (seePlayer)
+      {
+        m_direction = seek(playerPos.position, 2);
+        if (m_touchedPlayer)
+        {
+          m_direction += fleeRatio(playerPos.position, 10, 4);
+        }
+      }
+      else
+      {
+        m_elapseTime += Time.deltaTime;
+        m_direction = patrolCircuit();
+      }
+      elapseToAttac += Time.deltaTime;
+      if (timeToAttacAgain <= elapseToAttac)
+      {
+        m_touchedPlayer = false;
+      }
+      m_direction.z = 0;
+      m_direction.Normalize();
+      m_direction = wander();
     }
-    else
-    {
-      m_elapseTime += Time.deltaTime;
-      m_direction = patrolCircuit();
-    }
+   
 
-    m_direction.z = 0;
-    m_direction.Normalize();
-    m_direction = wander();
     float dir = Mathf.Abs(viewDir - newViewDir);
+
+
     if (dir>0.5)
     {
       if (m_direction.x >= 0)
@@ -156,5 +180,29 @@ public class EnemyMovement : MonoBehaviour
     F = seek(posF, m_WanderImpetu);
 
     return F;
+  }
+
+  Vector3 fleeRatio(Vector3 PosB, float impetu, float ratio)
+  {
+    Vector3 Dir = transform.position - PosB;
+    Dir.z = 0;
+    Vector3 F = new Vector3(0, 0, 0);
+    if (Dir.magnitude < ratio)
+    {
+      F = Dir.normalized * impetu;
+    }
+    return F;
+  }
+
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    var p=collision.GetComponent<tempPlayer>();
+    if (p && timeToAttacAgain <= elapseToAttac)
+    {
+      timeToContinue = 0;
+       timeToAttacAgain = Random.Range(2, 4);
+      elapseToAttac = 0;
+      m_touchedPlayer = true;
+    }
   }
 }

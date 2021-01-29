@@ -5,7 +5,7 @@ using UnityEngine;
 public class View : MonoBehaviour
 {
   public EnemyMovement m_body;
-  float timeToLeft = 5;
+  public float timeToLeft = 7;
   float elapseTime = 0;
   // Update is called once per frame
   void Update()
@@ -19,17 +19,6 @@ public class View : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-    //if (m_body.seePlayer)
-    //{
-    //  if (elapseTime >= timeToLeft)
-    //  {
-    //    m_body.seePlayer = false;
-    //  }
-    //  else
-    //  {
-    //    return;
-    //  }
-    //}
     var p = collision.GetComponent<tempPlayer>();
     if (p)
     {
