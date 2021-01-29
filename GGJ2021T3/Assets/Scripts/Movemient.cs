@@ -8,15 +8,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Movemient : MonoBehaviour
 {
-  const float DEFAULT_MAX_VELOCITY = 45.0f;
+  const float DEFAULT_MAX_VELOCITY = 1;
 
-  const float MAX_SPEED = 125.0f;
+  const float MAX_SPEED = 10;
 
-  const float MIN_SPEED = 50.0f;
+  const float MIN_SPEED = 15;
 
   const float MAX_ACCELERATION = 10.0f;
 
-  const float DEFAULT_JUMP_FORCE = 20.0f;
+  const float DEFAULT_JUMP_FORCE = 15;
 
   const float CURRENT_GRAVITY_SCALE = 2.5f;
 
@@ -99,12 +99,21 @@ public class Movemient : MonoBehaviour
 
     body.velocity += result;
 
-    bool isTooMuchVelocity = body.velocity.magnitude > currentMaxVelocity;
+    //bool isTooMuchVelocity = body.velocity.magnitude > currentMaxVelocity;
+    bool isTooMuchVelocity = Mathf.Abs(body.velocity.x) > currentMaxVelocity;
 
     if (isTooMuchVelocity)
     {
-      Vector2 normalizedVelocity = body.velocity.normalized;
-      body.velocity = normalizedVelocity * currentMaxVelocity;
+      Vector2 normalizedVelocity = body.velocity;//.normalized;
+      //body.velocity = normalizedVelocity * currentMaxVelocity;
+      if (normalizedVelocity.x<0)
+      {
+        body.velocity = new Vector2(-currentMaxVelocity, normalizedVelocity.y);
+      }
+      else
+      {
+        body.velocity = new Vector2(currentMaxVelocity, normalizedVelocity.y);
+      }
     }
   }
 
