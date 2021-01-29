@@ -10,6 +10,7 @@ public class Allanim : MonoBehaviour
 
   public GameObject ghost;
   public GameObject fire;
+  public GameObject Menu;
 
   private LTSpline visualizePath;
 
@@ -25,6 +26,10 @@ public class Allanim : MonoBehaviour
   public float startToWalk = 6;
 
   public animPlayer m_player;
+
+  public bool moveButtons = false;
+
+  public float speedToQuitButtons = 2;
   // Start is called before the first frame update
   void Start()
   {
@@ -44,9 +49,13 @@ public class Allanim : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space))
+    //if (Input.GetKeyDown(KeyCode.Space))
+    //{
+    //  
+    //}
+    if (moveButtons)
     {
-      play = true;
+      Menu.transform.position = Menu.transform.position + Vector3.up * speedToQuitButtons * Time.deltaTime;
     }
     if (play)
     {
@@ -81,5 +90,16 @@ public class Allanim : MonoBehaviour
   void animGhost()
   {
     LeanTween.moveSpline(ghost, pathGhost, 2.0f).setOrientToPath2d(true).setSpeed(4f);
+  }
+
+  public void playGame()
+  {
+    Invoke("playAnimation",3);
+    moveButtons = true;
+  }
+
+  public void playAnimation()
+  {
+    play = true;
   }
 }
