@@ -7,6 +7,8 @@ public class EnemyMovement : MonoBehaviour
   public float damage = 10;
   public float m_weight = 1;
   public float m_speed = 1;
+  public float m_speedPersue = 6;
+  public float m_speedPatrol = 4;
   public List<Transform> m_pathPoints;
   public float m_impetu=1;
   public float m_ratio = 3;

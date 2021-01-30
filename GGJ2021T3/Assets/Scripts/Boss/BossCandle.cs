@@ -39,11 +39,11 @@ public class BossCandle : MonoBehaviour
   {
     m_life--;
     m_sprite.color = Color.red;
-    if (m_life <= 2)
+    if (m_life <= 3)
     {
       m_boss.setFase(3);
     }
-    else if(m_life <= 5)
+    else if(m_life <= 6)
     {
       m_boss.setFase(2);
 

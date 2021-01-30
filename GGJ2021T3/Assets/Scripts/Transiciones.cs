@@ -18,8 +18,7 @@ public class Transiciones : MonoBehaviour
     IEnumerator Transiciona(string scene)
     {
         transicionAnim.SetTrigger("Salida");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene(scene);
-    
     }
 }

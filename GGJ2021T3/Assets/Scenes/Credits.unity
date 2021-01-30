@@ -859,6 +859,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 381184316179990502, guid: 72984fac1e316984da5dd62b29c8eb43, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72984fac1e316984da5dd62b29c8eb43, type: 3}
 --- !u!1 &1271957929
@@ -1235,7 +1239,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Sergio Juan D\xEDaz Carmona\nAriel Israel Corona Guti\xE9rrez"
+  m_Text: "Sergio Juan D\xEDaz Carmona\nAriel Israel Corona Guti\xE9rrez (Arielito
+    Bonito)"
 --- !u!222 &1649924683
 CanvasRenderer:
   m_ObjectHideFlags: 0

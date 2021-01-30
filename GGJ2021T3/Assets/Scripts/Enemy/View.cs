@@ -31,6 +31,7 @@ public class View : MonoBehaviour
     {
       m_mySprite.color = new Color(1,1,1,0.5f);
       m_body.seePlayer = false;
+      m_body.m_speed = m_body.m_speedPatrol;
     }
   }
 
@@ -47,6 +48,7 @@ public class View : MonoBehaviour
       elapseTime = 0;
       m_body.playerPos = p.transform;
       m_body.seePlayer = true;
+      m_body.m_speed = m_body.m_speedPersue;
     }
   }
 }

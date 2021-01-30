@@ -25,6 +25,10 @@ public class Boss1 : MonoBehaviour
   Vector3 scale;
 
   public Transform playerPos;
+  public Transform spawnBulletPos;
+
+  public GameObject waxBulletBoss;
+  public GameObject ghostBullet;
   
   float ViewDir = -1;
 
@@ -36,19 +40,71 @@ public class Boss1 : MonoBehaviour
   float m_timeToBack = 8;
   float m_elapseTimeToBack = 0;
 
+  float timeToAttack;
+  float elapseTimeToAttack;
+  bool Alredyattack = false;
+
+  Vector2 fase1Limit = new Vector2(15,31);
+  Vector2 fase2Limit = new Vector2(12,26);
+  Vector2 fase3Limit = new Vector2(10,21);
+  Vector2 currentLimit = new Vector2(10,20);
+
+
+  Vector2 fase1Atack = new Vector2(3, 7);
+  Vector2 fase2Atack = new Vector2(2, 5);
+  Vector2 fase3Atack = new Vector2(1, 4);
+  Vector2 currentAtack = new Vector2(10, 20);
+
+  BossCandle m_candle;
+  bossLifeBar m_life;
+
+  public float timeToDisaper=2.0f;
+  float elapseToDisaper=0.0f;
   // Start is called before the first frame update
   void Start()
   {
+    m_candle = FindObjectOfType<BossCandle>();
+    m_life = FindObjectOfType<bossLifeBar>();
+    currentLimit = fase1Limit;
+    currentAtack = fase1Atack;
     m_currentSpeed = m_speed1;
     m_pathPoints = m_pathPoints1;
     m_CurrentBack = m_backRight;
     scale = transform.localScale;
     m_mySprite = GetComponent<SpriteRenderer>();
+
+    timeToAttack = Random.Range(3,6);
   }
 
   // Update is called once per frame
   void Update()
   {
+    if (m_life.m_died)
+    {
+      elapseToDisaper += Time.deltaTime;
+      GetComponent<Animator>().SetBool("died", true);
+
+      m_candle.GetComponent<SpriteRenderer>().enabled = false;
+      m_mySprite.color = new Color(1,1,1,1-1*elapseToDisaper/ timeToDisaper);
+      if (elapseToDisaper > timeToDisaper)
+      {
+        FindObjectOfType<Transiciones>().LoadScene("FinalScene");
+      }
+      return;
+    }
+    elapseTimeToAttack += Time.deltaTime;
+    if (timeToAttack< elapseTimeToAttack)
+    {
+      Invoke("shoot",0.50f);
+      timeToAttack = Random.Range(currentAtack.x, currentAtack.y);
+      GetComponent<Animator>().SetBool("Attacking", true);
+      elapseTimeToAttack = 0;
+      Alredyattack = true;
+    }
+    else
+    {
+      GetComponent<Animator>().SetBool("Attacking", false);
+    }
     m_elapseTimeToBack += Time.deltaTime;
     if (m_elapseTimeToBack >= m_timeToBack)
     {
@@ -148,7 +204,7 @@ public class Boss1 : MonoBehaviour
       m_isBack = false;
       m_elapseTime = 0;
       m_elapseTimeToBack = 0;
-      m_timeToBack = Random.Range(7.0f, 13.0f);
+      m_timeToBack = Random.Range(currentLimit.x, currentLimit.y);
       return;
     }
     Dir.Normalize();
@@ -178,10 +234,46 @@ public class Boss1 : MonoBehaviour
     if (fase==2)
     {
       m_currentSpeed = m_speed2;
+      currentLimit = fase2Limit;
+      currentAtack = fase2Atack;
     }
     else if (fase==3)
     {
       m_currentSpeed = m_speed3;
+      currentLimit = fase3Limit;
+      currentAtack = fase3Atack;
     }
+    m_isPatrol = false;
+    m_isBack = true;
+  }
+
+  void shoot()
+  {
+    int ran = Random.Range(0, 7);
+    if (ran>=5)
+    {
+      shootWax();
+    }
+    else
+    {
+      shootGhost();
+    }
+  }
+
+  void shootWax()
+  {
+
+    var obj = Instantiate(waxBulletBoss, spawnBulletPos.position, Quaternion.identity);
+    var attack = obj.GetComponent<waxBoss>();
+    Vector3 direction = playerPos.position - spawnBulletPos.position;
+    attack.setDirection(direction.normalized);
+  }
+
+  void shootGhost()
+  {
+    var obj = Instantiate(ghostBullet, spawnBulletPos.position, Quaternion.identity);
+    var attack = obj.GetComponent<ghostBoss>();
+    Vector3 direction = playerPos.position - spawnBulletPos.position;
+    attack.setDirection(direction.normalized);
   }
 }
