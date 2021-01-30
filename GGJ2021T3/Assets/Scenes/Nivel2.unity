@@ -2671,6 +2671,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1247145401352693717, guid: dc892fc35931c404aaf737696eeb6750, type: 3}
+      propertyPath: levelName
+      value: Nivel3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247145401352693717, guid: dc892fc35931c404aaf737696eeb6750, type: 3}
       propertyPath: transition
       value: 
       objectReference: {fileID: 1658794630}
