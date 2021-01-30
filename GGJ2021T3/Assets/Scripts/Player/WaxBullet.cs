@@ -40,9 +40,11 @@ public class WaxBullet : MonoBehaviour
     if (collision.tag=="Enemy")
     {
       collision.GetComponent<EnemyMovement>().freeze();
+      collision.GetComponent<MakeSound>().play();
     }
     if (collision.tag == "BCandle")
     {
+      collision.GetComponent<MakeSound>().play();
       collision.GetComponent<BossCandle>().addDamage();
     }
     if (collision.tag !="Player" && collision.tag != "ViewEnemy" && collision.tag != "WaxHealth")

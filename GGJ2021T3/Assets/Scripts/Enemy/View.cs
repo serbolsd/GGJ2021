@@ -7,11 +7,12 @@ public class View : MonoBehaviour
   public EnemyMovement m_body;
   public float timeToLeft = 7;
   float elapseTime = 0;
-
+  MakeSound m_sound;
   public SpriteRenderer m_mySprite;
   private void Start()
   {
     m_mySprite = GetComponent<SpriteRenderer>();
+    m_sound = GetComponent<MakeSound>();
   }
   // Update is called once per frame
   void Update()
@@ -37,6 +38,10 @@ public class View : MonoBehaviour
   {
     if (collision.tag=="Player")
     {
+      if (!m_body.seePlayer)
+      {
+        m_sound.play();
+      }
       var p = collision;
       m_mySprite.color = new Color(1,0,0,0.5f);
       elapseTime = 0;

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackSound : MonoBehaviour
+public class MakeSound : MonoBehaviour
 {
 
-  public AudioClip attackClip;
+  public AudioClip Clip;
 
 
   private AudioSource audioattack;
@@ -13,8 +13,11 @@ public class AttackSound : MonoBehaviour
   void Start()
   {
     audioattack = GetComponent<AudioSource>();
-    audioattack.clip = attackClip;
-    audioattack.Play();
+  }
 
+  public void play()
+  {
+    audioattack.clip = Clip;
+    audioattack.Play();
   }
 }
