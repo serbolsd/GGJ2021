@@ -12406,6 +12406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7402732237224043336, guid: df6cfede4b74d6f408e815ca7313604a, type: 3}
+      propertyPath: m_TagString
+      value: Surface
+      objectReference: {fileID: 0}
     - target: {fileID: 7402732237224043340, guid: df6cfede4b74d6f408e815ca7313604a, type: 3}
       propertyPath: m_RootOrder
       value: 47
