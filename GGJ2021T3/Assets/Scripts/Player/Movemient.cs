@@ -101,6 +101,12 @@ public class Movemient : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    if (m_shooter.m_life.m_died)
+    {
+
+      m_animator.SetBool("dead", true);
+      return;
+    }
     Vector2 result = handleInput(); 
 
     direction = Vector2.zero;

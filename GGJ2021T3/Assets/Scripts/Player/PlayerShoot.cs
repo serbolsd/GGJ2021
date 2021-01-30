@@ -20,6 +20,10 @@ public class PlayerShoot : MonoBehaviour
   }
   void Update()
   {
+    if (m_life.m_died)
+    {
+      return;
+    }
     m_elapseTime += Time.deltaTime;
     if (m_elapseTime>=0.2)
     {

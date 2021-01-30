@@ -12,7 +12,7 @@ public class Vida_Script : MonoBehaviour
 
   public float VidaMaxima;
 
-  bool m_died = false;
+  public bool m_died = false;
 
   void Update()
   {

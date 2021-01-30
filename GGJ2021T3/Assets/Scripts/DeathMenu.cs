@@ -6,54 +6,52 @@ using UnityEngine.SceneManagement;
 
 public class DeathMenu : MonoBehaviour
 {
-    public static bool playerIsDeath = false;
+  public static bool playerIsDeath = false;
 
-    //public GameObject deathMenuUI;
+  public GameObject deathMenuUI;
 
-    // Update is called once per frame
-    void Update()
+  public string scenaToRestart;
+  public Vida_Script m_playerLive;
+  private void Start()
+  {
+    m_playerLive = FindObjectOfType<Vida_Script>();
+  }
+  private void Update()
+  {
+    if (m_playerLive.m_died)
     {
-
-        if (Input.GetKeyDown("m"))
-        {
-            if (playerIsDeath)
-            {
-                Restart();
-            }
-            else
-            {
-                Death();
-            }
-        }
+      deathMenuUI.SetActive(true);
     }
+  }
+  public void Restart()
+  {
+    // deathMenuUI.SetActive(false);
+    Time.timeScale = 1f;
+    //playerIsDeath = false;
+    FindObjectOfType<Transiciones>().LoadScene(scenaToRestart);
+    Debug.Log("Restar");
+  }
 
-    public void Restart()
-    {
-        // deathMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        playerIsDeath = false;
-        Debug.Log("Restar");
-    }
+  void Death()
+  {
+    // deathMenuUI.SetActive(true);
+    //Time.timeScale = 0f;
+    playerIsDeath = true;
+    FindObjectOfType<Transiciones>().LoadScene(scenaToRestart);
+    Debug.Log("Death");
 
-    void Death()
-    {
-        // deathMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        playerIsDeath = true;
-        Debug.Log("Death");
-
-    }
+  }
 
 
-    public void Exit()
-    {
-        Debug.Log("Exit to menu");
+  public void Exit()
+  {
+    FindObjectOfType<Transiciones>().LoadScene("Intro");
+    Debug.Log("Exit to menu");
+  }
 
-    }
-
-    public void ExitGame()
-    {
-        Debug.Log("Quit game");
-        Application.Quit();
-    }
+  public void ExitGame()
+  {
+    Debug.Log("Quit game");
+    Application.Quit();
+  }
 }

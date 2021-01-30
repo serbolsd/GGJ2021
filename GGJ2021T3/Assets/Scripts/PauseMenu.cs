@@ -9,10 +9,18 @@ public class PauseMenu : MonoBehaviour
 
   public GameObject pauseMenuUI;
 
+  public Vida_Script m_playerLive;
+  private void Start()
+  {
+    m_playerLive = FindObjectOfType<Vida_Script>();
+  }
   // Update is called once per frame
   void Update()
   {
-
+    if (m_playerLive.m_died)
+    {
+      return;
+    }
     if (Input.GetKeyDown(KeyCode.Escape))
     {
       if (GameIsPause)
