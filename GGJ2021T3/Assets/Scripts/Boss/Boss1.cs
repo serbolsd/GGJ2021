@@ -42,7 +42,6 @@ public class Boss1 : MonoBehaviour
 
   float timeToAttack;
   float elapseTimeToAttack;
-  bool Alredyattack = false;
 
   Vector2 fase1Limit = new Vector2(15,31);
   Vector2 fase2Limit = new Vector2(12,26);
@@ -99,7 +98,7 @@ public class Boss1 : MonoBehaviour
       timeToAttack = Random.Range(currentAtack.x, currentAtack.y);
       GetComponent<Animator>().SetBool("Attacking", true);
       elapseTimeToAttack = 0;
-      Alredyattack = true;
+      //Alredyattack = true;
     }
     else
     {

@@ -9,6 +9,7 @@ TagManager:
   - WaxHealth
   - BCandle
   - Surface
+  - PlayerBody
   layers:
   - Default
   - TransparentFX
@@ -16,9 +17,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Platforms
+  - Walls
+  - Cellings
   - 
   - 
   - 
