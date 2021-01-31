@@ -73,7 +73,7 @@ public class EnemyMovement : MonoBehaviour
       }
       else
       {
-        m_mySprite.color = Color.cyan;
+        m_mySprite.color = new Color(1*(timeFleeze/ timeToDesFleeze),1,1,1);
         m_myView.m_mySprite.enabled = false;
       }
       return;

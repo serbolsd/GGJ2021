@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4359898868923544858}
   - component: {fileID: 4359898868923544853}
   - component: {fileID: 4359898868923544852}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Pilar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

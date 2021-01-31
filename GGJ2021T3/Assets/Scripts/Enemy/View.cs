@@ -37,6 +37,10 @@ public class View : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
+    if (m_body.isFleeze)
+    {
+      return;
+    }
     if (collision.tag=="Player")
     {
       if (!m_body.seePlayer)

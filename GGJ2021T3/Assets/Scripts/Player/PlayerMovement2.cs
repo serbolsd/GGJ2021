@@ -129,7 +129,7 @@ public class PlayerMovement2 : MonoBehaviour
   bool 
   checkIsGrounded() {
     RaycastHit2D cast = 
-      Physics2D.BoxCast(m_boxCollider.bounds.center, m_boxCollider.bounds.size,0,Vector2.down,0.1f, m_wallsLayer);
+      Physics2D.BoxCast(m_boxCollider.bounds.center, m_boxCollider.bounds.size,0,Vector2.down,0.1f, m_platformsLayer);
     return cast.collider != null;
   }
 
@@ -137,7 +137,7 @@ public class PlayerMovement2 : MonoBehaviour
   checkCelling()
   {
     RaycastHit2D cast =
-       Physics2D.BoxCast(m_headCollider.bounds.center, m_headCollider.bounds.size, 0, Vector2.up, 0.1f, m_wallsLayer);
+       Physics2D.BoxCast(m_headCollider.bounds.center, m_headCollider.bounds.size, 0, Vector2.up, 0.1f, m_platformsLayer);
     if (cast.collider != null)
     {
       m_currentJumpForce = 0;
@@ -149,14 +149,14 @@ public class PlayerMovement2 : MonoBehaviour
   checkWall()
   {
     RaycastHit2D cast =
-      Physics2D.BoxCast(m_bodyCollider.bounds.center, m_bodyCollider.bounds.size, 0, Vector2.right, 0.1f, m_wallsLayer);
+    Physics2D.BoxCast(m_bodyCollider.bounds.center, m_bodyCollider.bounds.size, 0, Vector2.right, 0.1f, m_platformsLayer);
     if (cast.collider != null)
     {
       m_rightSpeed = 0;
       m_rightTime = 0;
     }
     cast =
-    Physics2D.BoxCast(m_bodyCollider.bounds.center, m_bodyCollider.bounds.size, 0, Vector2.left, 0.1f, m_wallsLayer);
+    Physics2D.BoxCast(m_bodyCollider.bounds.center, m_bodyCollider.bounds.size, 0, Vector2.left, 0.1f, m_platformsLayer);
     if (cast.collider != null)
     {
       m_leftSpeed = 0;
