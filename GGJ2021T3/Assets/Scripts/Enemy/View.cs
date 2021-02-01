@@ -9,13 +9,13 @@ public class View : MonoBehaviour
   float elapseTime = 0;
   MakeSound m_sound;
   public SpriteRenderer m_mySprite;
-  private void Start()
+  public void onStart()
   {
     m_mySprite = GetComponent<SpriteRenderer>();
     m_sound = GetComponent<MakeSound>();
   }
   // Update is called once per frame
-  void Update()
+  public void onUpdate()
   {
     //if (m_body.isFleeze)
     //{

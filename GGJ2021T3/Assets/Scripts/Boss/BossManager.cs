@@ -9,7 +9,14 @@ public class BossManager : MonoBehaviour
   {
     if (FindObjectOfType<DonDestroy>())
     {
-      Destroy(FindObjectOfType<DonDestroy>().gameObject);
+      var  objets = FindObjectsOfType<DonDestroy>();
+      foreach (var item in objets)
+      {
+        if (item.tag!="UI")
+        {
+          Destroy(FindObjectOfType<DonDestroy>().gameObject);
+        }
+      }
     }
   }
 }

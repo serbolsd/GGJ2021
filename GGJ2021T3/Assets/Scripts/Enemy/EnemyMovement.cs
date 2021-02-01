@@ -50,13 +50,14 @@ public class EnemyMovement : MonoBehaviour
   public View m_myView;
 
   public SpriteRenderer m_mySprite;
-  private void Start()
+  public void onStart()
   {
     scale = transform.localScale;
     m_mySprite = GetComponent<SpriteRenderer>();
+    m_myView.onStart();
   }
   // Update is called once per frame
-  void Update()
+  public void onUpdate()
   {
     //if (Input.GetKeyDown(KeyCode.Space))
     //{
@@ -78,6 +79,7 @@ public class EnemyMovement : MonoBehaviour
       }
       return;
     }
+    m_myView.onUpdate();
     timeToContinue += Time.deltaTime;
     if (timeToContinue>2)
     {

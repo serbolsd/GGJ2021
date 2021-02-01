@@ -14,13 +14,13 @@ public class BossCandle : MonoBehaviour
 
   float elapseTime;
 
-  private void Start()
+  public void onStart()
   {
     m_boss = FindObjectOfType<Boss1>();
     m_sprite = GetComponent<SpriteRenderer>();
   }
 
-  private void Update()
+  public void onUpdate()
   {
     if (m_sprite.color.g<1)
     {

@@ -70,7 +70,7 @@ public class PlayerMovement2 : MonoBehaviour
   public float m_waitToCheckGround = 0.2f;
   public float m_elaptseToCheckGround = 0.2f;
   // Start is called before the first frame update
-  void Start()
+  public void onStart()
   {
     m_body = GetComponent<Rigidbody2D>();
     m_sprite = GetComponent<SpriteRenderer>();
@@ -79,6 +79,7 @@ public class PlayerMovement2 : MonoBehaviour
     m_boxCollider = GetComponent<BoxCollider2D>();
 
     m_body.gravityScale = m_GravityScale;
+    m_shooter.onStart();
 
     m_scale = transform.localScale;
     m_acceleration = 1.0f;
@@ -88,7 +89,7 @@ public class PlayerMovement2 : MonoBehaviour
   }
 
   // Update is called once per frame
-  void Update()
+  public void onUpdate()
   {
 
     //m_acceleration = m_MaxSpeed / m_timeToMaxSpeed;
@@ -116,7 +117,7 @@ public class PlayerMovement2 : MonoBehaviour
 
   
     handleInput();
-
+    m_shooter.onUpdate();
 
     float speedx = Mathf.Abs(m_body.velocity.x);
     bool isTooMuchVelocity = speedx > m_MaxSpeed;
@@ -137,7 +138,7 @@ public class PlayerMovement2 : MonoBehaviour
   checkCelling()
   {
     RaycastHit2D cast =
-       Physics2D.BoxCast(m_headCollider.bounds.center, m_headCollider.bounds.size, 0, Vector2.up, 0.1f, m_platformsLayer);
+       Physics2D.BoxCast(m_boxCollider.bounds.center, m_boxCollider.bounds.size, 0, Vector2.up, 0.1f, m_platformsLayer);
     if (cast.collider != null)
     {
       m_currentJumpForce = 0;
@@ -149,14 +150,14 @@ public class PlayerMovement2 : MonoBehaviour
   checkWall()
   {
     RaycastHit2D cast =
-    Physics2D.BoxCast(m_bodyCollider.bounds.center, m_bodyCollider.bounds.size, 0, Vector2.right, 0.1f, m_platformsLayer);
+    Physics2D.BoxCast(m_boxCollider.bounds.center, m_boxCollider.bounds.size *0.5f, 0, Vector2.right, 0.5f, m_platformsLayer);
     if (cast.collider != null)
     {
       m_rightSpeed = 0;
       m_rightTime = 0;
     }
     cast =
-    Physics2D.BoxCast(m_bodyCollider.bounds.center, m_bodyCollider.bounds.size, 0, Vector2.left, 0.1f, m_platformsLayer);
+    Physics2D.BoxCast(m_boxCollider.bounds.center, m_boxCollider.bounds.size* 0.5f, 0, Vector2.left, 0.5f, m_platformsLayer);
     if (cast.collider != null)
     {
       m_leftSpeed = 0;

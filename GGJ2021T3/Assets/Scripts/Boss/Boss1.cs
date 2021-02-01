@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss1 : MonoBehaviour
+public class Boss1 : ElementOfLevel
 {
   public float m_currentSpeed = 4;
   public float m_speed1 = 4;
@@ -60,9 +60,10 @@ public class Boss1 : MonoBehaviour
   public float timeToDisaper=2.0f;
   float elapseToDisaper=0.0f;
   // Start is called before the first frame update
-  void Start()
+  override public void onStart()
   {
     m_candle = FindObjectOfType<BossCandle>();
+    m_candle.onStart();
     m_life = FindObjectOfType<bossLifeBar>();
     currentLimit = fase1Limit;
     currentAtack = fase1Atack;
@@ -76,8 +77,9 @@ public class Boss1 : MonoBehaviour
   }
 
   // Update is called once per frame
-  void Update()
+  override public void onUpdate()
   {
+    m_candle.onUpdate();
     if (m_life.m_died)
     {
       elapseToDisaper += Time.deltaTime;

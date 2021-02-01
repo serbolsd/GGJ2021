@@ -13,12 +13,12 @@ public class PlayerShoot : MonoBehaviour
   public float m_elapseTime;
   public bool shooting = false;
   // Update is called once per frame
-  private void Start()
+  public void onStart()
   {
     m_elapseTime = m_shootDelay;
     m_life = FindObjectOfType<Vida_Script>();
   }
-  void Update()
+  public void onUpdate()
   {
     if (m_life.m_died)
     {
