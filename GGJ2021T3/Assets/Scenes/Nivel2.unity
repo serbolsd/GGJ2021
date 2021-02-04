@@ -1101,6 +1101,7 @@ MonoBehaviour:
   m_deathMenu: {fileID: 0}
   m_player: {fileID: 0}
   m_elements: []
+  m_nameOfCurrentLevel: Nivel2
   setFullLife: 0
 --- !u!4 &499461856
 Transform:

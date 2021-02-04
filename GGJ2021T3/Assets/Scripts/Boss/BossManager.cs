@@ -14,7 +14,7 @@ public class BossManager : MonoBehaviour
       {
         if (item.tag!="UI")
         {
-          Destroy(FindObjectOfType<DonDestroy>().gameObject);
+          Destroy(item.gameObject);
         }
       }
     }

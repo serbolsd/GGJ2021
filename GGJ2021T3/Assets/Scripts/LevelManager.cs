@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
 
   public List<ElementOfLevel> m_elements;
 
+  public string m_nameOfCurrentLevel;
+
   public bool setFullLife = false;
 
   // Start is called before the first frame update
@@ -31,6 +33,7 @@ public class LevelManager : MonoBehaviour
     m_livePlayer = m_UIPlayer.m_livePlayer;
     m_pauseMenu = m_UIPlayer.m_pauseMenu;
     m_deathMenu = m_UIPlayer.m_deathMenu;
+    m_deathMenu.scenaToRestart = m_nameOfCurrentLevel;
 
     if (setFullLife)
     {

@@ -18,6 +18,7 @@ public class DeathMenu : MonoBehaviour
   {
     //m_playerLive = FindObjectOfType<Vida_Script>();
   }
+
   private void Update()
   {
     if (m_playerLive.m_died)
@@ -38,6 +39,7 @@ public class DeathMenu : MonoBehaviour
     //playerIsDeath = false;
     FindObjectOfType<Transiciones>().LoadScene(scenaToRestart);
     Debug.Log("Restar");
+    deathMenuUI.SetActive(false);
   }
 
   void Death()
@@ -54,6 +56,7 @@ public class DeathMenu : MonoBehaviour
     enableTransition();
     FindObjectOfType<Transiciones>().LoadScene("Intro");
     Debug.Log("Exit to menu");
+    deathMenuUI.SetActive(false);
   }
 
   public void ExitGame()
@@ -61,6 +64,7 @@ public class DeathMenu : MonoBehaviour
     enableTransition();
     Debug.Log("Quit game");
     Application.Quit();
+    deathMenuUI.SetActive(false);
   }
 
   private void enableTransition()
